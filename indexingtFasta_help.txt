@@ -1,0 +1,8 @@
+#indexingtFasta v0.1 (20170913) Jordi Leno-Colorado
+
+Usage: Usage: ./indexingtFasta -i file.tfa(.gz)
+
+Flags:
+      -i [tFasta file to index]
+   OPTIONAL PARAMETERS:
+      -h [help and exit]
