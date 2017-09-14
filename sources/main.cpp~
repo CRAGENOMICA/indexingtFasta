@@ -70,11 +70,7 @@ int main(int argc, char** argv) {
     std::cout << std::endl;
     std::cout << "tFasta to index: " << tfastafile << std::endl;
     std::vector<std::string> tfastaname_vector = CStringTools::split(tfastafile, '.');
-    if (tfastaname_vector[0] != "") {
-        outtfasta = tfastaname_vector[0] + ".indexed.tfa.gz";
-    } else {
-        outtfasta = "." + tfastaname_vector[1] + ".indexed.tfa.gz";
-    }
+    outtfasta = tfastaname_vector[0] + ".indexed.tfa.gz";
     indexname = tfastaname_vector[0] + "tfa.index";
     std::cout << "tFasta indexed and index: " << outtfasta << " & " << indexname << std::endl;
     std::cout << std::endl;
