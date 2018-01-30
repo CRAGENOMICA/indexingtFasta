@@ -24,10 +24,10 @@
 
 void help(std::string name) {
     std::cerr << "indexingtFasta\n"
-            << "Usage: ./indexingtFasta -i file.tfa(.gz)\n"
+            << "Usage: ./indexingtFasta -i file(.gz)\n"
             << "Options:\n"
             << "\t-h\t\tHelp and exit\n"
-            << "\t-i\t\ttFasta file to index\n"
+            << "\t-i\t\ttFasta or Weights file (compressed or uncompressed) to index\n"
             << std::endl;
 }
 
@@ -70,12 +70,15 @@ int main(int argc, char** argv) {
     std::cout << std::endl;
     std::cout << "tFasta to index: " << tfastafile << std::endl;
     std::vector<std::string> tfastaname_vector = CStringTools::split(tfastafile, '.');
-    if (tfastaname_vector[0] != "") {
-        outtfasta = tfastaname_vector[0] + ".indexed.tfa.gz";
+    if (tfastaname_vector[tfastaname_vector.size()-1] == "gz") {
+        for (int i = 0; i < tfastaname_vector.size() - 1; i++) {
+            outtfasta = outtfasta + tfastaname_vector[i] + ".";
+        }
+        outtfasta = outtfasta + "indexed.gz";
     } else {
-        outtfasta = "." + tfastaname_vector[1] + ".indexed.tfa.gz";
+        outtfasta = tfastafile + ".indexed.gz";
     }
-    indexname = tfastaname_vector[0] + "tfa.index";
+    indexname = tfastafile + ".index";
     std::cout << "tFasta indexed and index: " << outtfasta << " & " << indexname << std::endl;
     std::cout << std::endl;
 
